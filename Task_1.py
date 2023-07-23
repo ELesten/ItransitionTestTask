@@ -13,12 +13,16 @@ def max_multiplication(obj: str) -> str | int:
     max_result = 0
 
     for combination in found_combinations:
-        digit_list = []
 
-        for _ in range(4):
-            max_digit = max(combination)
-            digit_list.append(int(max_digit))
-            combination = combination.replace(max_digit, "", 1)
+        if len(combination) > 4:
+            digit_list = []
+            for _ in range(4):
+                max_digit = max(combination)
+                digit_list.append(int(max_digit))
+                combination = combination.replace(max_digit, "", 1)
+
+        else:
+            digit_list = list(map(lambda digit: int(digit), combination))
 
         if 0 in digit_list:
             continue
